@@ -1,9 +1,9 @@
-// script.js
 let points = parseInt(localStorage.getItem('points')) || 0;
 let level = Math.floor(points / 100) + 1;
 
 document.getElementById('points').innerText = points;
 document.getElementById('level').innerText = level;
+updateProgressBar();
 
 document.getElementById('note-area').value = localStorage.getItem('notes') || '';
 
@@ -47,10 +47,40 @@ function saveNote() {
   addPoints(5);
 }
 
-function toggleHabit(checkbox) {
+function toggleHabit(checkbox, habitText) {
   if (checkbox.checked) {
     addPoints(5);
+    checkbox.disabled = true;
   }
+}
+
+function addHabit() {
+  const input = document.getElementById('habit-input');
+  const habitText = input.value.trim();
+  if (habitText) {
+    const li = document.createElement('li');
+    li.innerHTML = `<label><input type="checkbox" onchange="toggleHabit(this, '${habitText}')"> ${habitText}</label> <button onclick="this.parentElement.remove()">🗑️</button>`;
+    document.getElementById('habit-list').appendChild(li);
+    input.value = '';
+    saveHabits();
+  }
+}
+
+function saveHabits() {
+  const habits = [];
+  document.querySelectorAll('#habit-list li label').forEach(label => {
+    habits.push(label.textContent.trim());
+  });
+  localStorage.setItem('habits', JSON.stringify(habits));
+}
+
+function loadHabits() {
+  const habits = JSON.parse(localStorage.getItem('habits')) || [];
+  habits.forEach(habitText => {
+    const li = document.createElement('li');
+    li.innerHTML = `<label><input type="checkbox" onchange="toggleHabit(this, '${habitText}')"> ${habitText}</label> <button onclick="this.parentElement.remove()">🗑️</button>`;
+    document.getElementById('habit-list').appendChild(li);
+  });
 }
 
 function addPoints(p) {
@@ -59,6 +89,22 @@ function addPoints(p) {
   document.getElementById('points').innerText = points;
   document.getElementById('level').innerText = level;
   localStorage.setItem('points', points);
+  updateProgressBar();
+}
+
+function updateProgressBar() {
+  const progress = (points % 100);
+  document.getElementById('level-progress').style.width = progress + '%';
+}
+
+function resetLevel() {
+  localStorage.setItem('points', '0');
+  points = 0;
+  level = 1;
+  document.getElementById('points').innerText = points;
+  document.getElementById('level').innerText = level;
+  updateProgressBar();
 }
 
 loadTodos();
+loadHabits();
