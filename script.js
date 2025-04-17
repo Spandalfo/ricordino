@@ -84,12 +84,17 @@ function loadHabits() {
 }
 
 function addPoints(p) {
+  const prevLevel = level;
   points += p;
   level = Math.floor(points / 100) + 1;
   document.getElementById('points').innerText = points;
   document.getElementById('level').innerText = level;
   localStorage.setItem('points', points);
   updateProgressBar();
+  if (level > prevLevel) {
+    document.getElementById('level-up-sound').play();
+    if (navigator.vibrate) navigator.vibrate(300);
+  }
 }
 
 function updateProgressBar() {

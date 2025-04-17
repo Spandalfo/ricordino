@@ -1,9 +1,9 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #0d0d1a;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0b0c10;
   margin: 0;
   padding: 0;
-  color: #cce6ff;
+  color: #66fcf1;
 }
 .container {
   max-width: 500px;
@@ -12,27 +12,28 @@ body {
 }
 h1, h2 {
   text-align: center;
-  color: #66ccff;
-  text-shadow: 0 0 5px #00aaff;
+  color: #45a29e;
+  text-shadow: 0 0 8px #00f6ff;
 }
 .section {
-  background: #1a1a2e;
+  background: rgba(10, 15, 20, 0.8);
   border-radius: 12px;
   padding: 1em;
   margin-bottom: 1em;
-  box-shadow: 0 2px 10px rgba(0, 170, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  animation: fadeIn 0.7s ease;
 }
 input[type="text"], textarea {
   width: 100%;
   padding: 0.5em;
   margin: 0.5em 0;
-  border: 1px solid #005577;
+  border: 1px solid #1f2833;
   border-radius: 8px;
-  background-color: #0d1b2a;
-  color: #cce6ff;
+  background-color: #1f2833;
+  color: #c5c6c7;
 }
 button {
-  background-color: #0066cc;
+  background-color: #0b7fab;
   color: white;
   padding: 0.5em 1em;
   border: none;
@@ -41,8 +42,8 @@ button {
   transition: 0.2s ease;
 }
 button:hover {
-  background-color: #0099ff;
-  box-shadow: 0 0 10px #00ccff;
+  background-color: #00bcd4;
+  box-shadow: 0 0 10px #00ffff;
 }
 ul {
   list-style: none;
@@ -63,16 +64,16 @@ textarea {
 }
 .progress-bar {
   width: 100%;
-  background: #0d1b2a;
+  background: #1f2833;
   border-radius: 8px;
   overflow: hidden;
   height: 20px;
   margin-top: 0.5em;
-  border: 1px solid #004466;
+  border: 1px solid #00c3ff;
 }
 #level-progress {
   height: 100%;
-  background: linear-gradient(to right, #00ccff, #003366);
+  background: linear-gradient(to right, #00f6ff, #003366);
   width: 0%;
   transition: width 0.4s ease;
 }
@@ -89,4 +90,8 @@ textarea {
   .input-group {
     flex-direction: column;
   }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
