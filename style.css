@@ -6,61 +6,63 @@ body {
   color: #66fcf1;
 }
 .container {
-  max-width: 480px;
+  max-width: 500px;
   margin: auto;
   padding: 20px;
 }
 h1 {
   text-align: center;
-  color: #00f6ff;
   font-size: 2em;
-  padding: 10px;
+  padding: 12px;
   border: 2px solid #00f6ff;
-  border-radius: 10px;
+  border-radius: 12px;
   text-shadow: 0 0 10px #00f6ff;
+  color: #00f6ff;
+  margin-bottom: 20px;
 }
-.section {
-  background-color: #1f2833;
-  border-radius: 10px;
-  margin: 20px 0;
-  padding: 15px;
+.card {
+  background: #0e1116;
+  border: 2px solid #00f6ff;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
   box-shadow: 0 0 12px #00f6ff;
 }
 h2 {
+  margin-top: 0;
+  font-size: 1.2em;
   color: #00f6ff;
-  font-size: 1.1em;
-  text-shadow: 0 0 6px #00f6ff;
+  text-shadow: 0 0 5px #00f6ff;
+  text-align: center;
 }
 ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
 }
 li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 6px 0;
+  margin: 8px 0;
 }
 input[type="text"], textarea {
   width: 100%;
   padding: 10px;
   background: #0b0c10;
   border: 1px solid #00f6ff;
-  color: #fff;
-  border-radius: 6px;
+  color: #ffffff;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
 }
 textarea {
-  margin-top: 10px;
-  height: 100px;
+  height: 80px;
 }
 button {
   background: #00f6ff;
   border: none;
-  padding: 10px;
-  border-radius: 6px;
-  font-weight: bold;
   color: #000;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 10px;
   cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
 }
 button:hover {
   background: #02cce6;
@@ -72,16 +74,17 @@ button:hover {
 }
 .progress-bar {
   width: 100%;
-  height: 14px;
-  background: #0b0c10;
+  background: #1a1f25;
   border: 1px solid #00f6ff;
-  border-radius: 8px;
-  margin-top: 8px;
+  height: 16px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 #level-progress {
   height: 100%;
+  background: linear-gradient(to right, #00f6ff, #003366);
   width: 0%;
-  background: #00f6ff;
-  transition: width 0.3s ease;
-  border-radius: 8px;
+  transition: width 0.4s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 8px #00f6ff;
 }
