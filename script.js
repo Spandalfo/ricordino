@@ -1,3 +1,4 @@
+
 let points = parseInt(localStorage.getItem('points')) || 0;
 let level = Math.floor(points / 100) + 1;
 
@@ -50,3 +51,22 @@ function updateProgressBar() {
   const progress = (points % 100);
   document.getElementById('level-progress').style.width = progress + '%';
 }
+
+// Water tracker
+function loadWater() {
+  const saved = JSON.parse(localStorage.getItem('water') || '[]');
+  const container = document.getElementById('water-tracker');
+  container.innerHTML = '';
+  for (let i = 0; i < 10; i++) {
+    const div = document.createElement('div');
+    div.className = 'water-glass' + (saved[i] ? ' filled' : '');
+    div.innerText = '0.3L';
+    div.onclick = () => {
+      div.classList.toggle('filled');
+      saved[i] = div.classList.contains('filled');
+      localStorage.setItem('water', JSON.stringify(saved));
+    };
+    container.appendChild(div);
+  }
+}
+loadWater();

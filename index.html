@@ -12,17 +12,23 @@
     <h1>THE SYSTEM</h1>
 
     <div class="card">
+      <h2>LIVELLO</h2>
+      <div class="progress-bar"><div id="level-progress"></div></div>
+      <p><span id="points">0</span> / 100</p>
+    </div>
+
+    <div class="card">
+      <h2>ACQUA (3L)</h2>
+      <div id="water-tracker"></div>
+    </div>
+
+    <div class="card">
       <h2>TO-DO LIST</h2>
       <ul id="todo-list"></ul>
       <div class="input-group">
         <input type="text" id="todo-input" placeholder="Aggiungi attività" />
         <button onclick="addTodo()">+</button>
       </div>
-    </div>
-
-    <div class="card">
-      <h2>NOTE</h2>
-      <textarea id="note-area" placeholder="Scrivi i tuoi appunti..."></textarea>
     </div>
 
     <div class="card">
@@ -35,9 +41,8 @@
     </div>
 
     <div class="card">
-      <h2>LIVELLO</h2>
-      <div class="progress-bar"><div id="level-progress"></div></div>
-      <p><span id="points">0</span> / 100</p>
+      <h2>NOTE</h2>
+      <textarea id="note-area" placeholder="Scrivi i tuoi appunti..."></textarea>
     </div>
 
     <audio id="level-up-sound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>

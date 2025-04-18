@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -87,4 +88,30 @@ button:hover {
   transition: width 0.4s ease;
   border-radius: 10px;
   box-shadow: 0 0 8px #00f6ff;
+}
+#water-tracker {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+.water-glass {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #0b0c10;
+  border: 2px solid #00f6ff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00f6ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.water-glass.filled {
+  background-color: #00f6ff;
+  color: #000;
+  text-decoration: line-through;
+  box-shadow: 0 0 10px #00f6ff;
 }
