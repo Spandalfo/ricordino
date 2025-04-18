@@ -1,10 +1,9 @@
 let points = parseInt(localStorage.getItem('points')) || 0;
 let level = Math.floor(points / 100) + 1;
 
-document.getElementById('points').innerText = points;
+document.getElementById('points').innerText = points % 100;
 document.getElementById('level').innerText = level;
 updateProgressBar();
-
 document.getElementById('note-area').value = localStorage.getItem('notes') || '';
 
 function addTodo() {
@@ -12,84 +11,39 @@ function addTodo() {
   const text = input.value.trim();
   if (text) {
     const li = document.createElement('li');
-    li.innerHTML = `<span>${text}</span> <button onclick="completeTodo(this)">✓</button>`;
+    li.innerHTML = `<label><input type="checkbox" onchange="completeTask(this, 10)"> ${text}</label>`;
     document.getElementById('todo-list').appendChild(li);
-    saveTodos();
     input.value = '';
-  }
-}
-
-function completeTodo(button) {
-  const li = button.parentElement;
-  li.remove();
-  addPoints(10);
-  saveTodos();
-}
-
-function saveTodos() {
-  const todos = [];
-  document.querySelectorAll('#todo-list li span').forEach(span => todos.push(span.textContent));
-  localStorage.setItem('todos', JSON.stringify(todos));
-}
-
-function loadTodos() {
-  const todos = JSON.parse(localStorage.getItem('todos')) || [];
-  todos.forEach(todo => {
-    const li = document.createElement('li');
-    li.innerHTML = `<span>${todo}</span> <button onclick="completeTodo(this)">✓</button>`;
-    document.getElementById('todo-list').appendChild(li);
-  });
-}
-
-function saveNote() {
-  const note = document.getElementById('note-area').value;
-  localStorage.setItem('notes', note);
-  addPoints(5);
-}
-
-function toggleHabit(checkbox, habitText) {
-  if (checkbox.checked) {
-    addPoints(5);
-    checkbox.disabled = true;
+    saveList('todo-list');
   }
 }
 
 function addHabit() {
   const input = document.getElementById('habit-input');
-  const habitText = input.value.trim();
-  if (habitText) {
+  const text = input.value.trim();
+  if (text) {
     const li = document.createElement('li');
-    li.innerHTML = `<label><input type="checkbox" onchange="toggleHabit(this, '${habitText}')"> ${habitText}</label> <button onclick="this.parentElement.remove()">🗑️</button>`;
+    li.innerHTML = `<label><input type="checkbox" onchange="completeTask(this, 5)"> ${text}</label>`;
     document.getElementById('habit-list').appendChild(li);
     input.value = '';
-    saveHabits();
+    saveList('habit-list');
   }
 }
 
-function saveHabits() {
-  const habits = [];
-  document.querySelectorAll('#habit-list li label').forEach(label => {
-    habits.push(label.textContent.trim());
-  });
-  localStorage.setItem('habits', JSON.stringify(habits));
-}
-
-function loadHabits() {
-  const habits = JSON.parse(localStorage.getItem('habits')) || [];
-  habits.forEach(habitText => {
-    const li = document.createElement('li');
-    li.innerHTML = `<label><input type="checkbox" onchange="toggleHabit(this, '${habitText}')"> ${habitText}</label> <button onclick="this.parentElement.remove()">🗑️</button>`;
-    document.getElementById('habit-list').appendChild(li);
-  });
+function completeTask(checkbox, pts) {
+  if (checkbox.checked) {
+    addPoints(pts);
+    checkbox.disabled = true;
+  }
 }
 
 function addPoints(p) {
   const prevLevel = level;
   points += p;
-  level = Math.floor(points / 100) + 1;
-  document.getElementById('points').innerText = points;
-  document.getElementById('level').innerText = level;
   localStorage.setItem('points', points);
+  level = Math.floor(points / 100) + 1;
+  document.getElementById('points').innerText = points % 100;
+  document.getElementById('level').innerText = level;
   updateProgressBar();
   if (level > prevLevel) {
     document.getElementById('level-up-sound').play();
@@ -102,14 +56,27 @@ function updateProgressBar() {
   document.getElementById('level-progress').style.width = progress + '%';
 }
 
-function resetLevel() {
-  localStorage.setItem('points', '0');
-  points = 0;
-  level = 1;
-  document.getElementById('points').innerText = points;
-  document.getElementById('level').innerText = level;
-  updateProgressBar();
+function saveList(id) {
+  const items = [];
+  document.querySelectorAll(`#${id} li`).forEach(li => {
+    const label = li.querySelector('label');
+    if (label) items.push(label.innerText.trim());
+  });
+  localStorage.setItem(id, JSON.stringify(items));
 }
 
-loadTodos();
-loadHabits();
+function loadList(id) {
+  const items = JSON.parse(localStorage.getItem(id)) || [];
+  items.forEach(text => {
+    const li = document.createElement('li');
+    li.innerHTML = `<label><input type="checkbox" onchange="completeTask(this, ${id === 'todo-list' ? 10 : 5})"> ${text}</label>`;
+    document.getElementById(id).appendChild(li);
+  });
+}
+
+loadList('todo-list');
+loadList('habit-list');
+
+document.getElementById('note-area').addEventListener('input', () => {
+  localStorage.setItem('notes', document.getElementById('note-area').value);
+});

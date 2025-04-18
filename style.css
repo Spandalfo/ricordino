@@ -1,97 +1,87 @@
 body {
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0b0c10;
   margin: 0;
   padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background-color: #0b0c10;
   color: #66fcf1;
 }
 .container {
-  max-width: 500px;
+  max-width: 480px;
   margin: auto;
-  padding: 1em;
+  padding: 20px;
 }
-h1, h2 {
+h1 {
   text-align: center;
-  color: #45a29e;
-  text-shadow: 0 0 8px #00f6ff;
+  color: #00f6ff;
+  font-size: 2em;
+  padding: 10px;
+  border: 2px solid #00f6ff;
+  border-radius: 10px;
+  text-shadow: 0 0 10px #00f6ff;
 }
 .section {
-  background: rgba(10, 15, 20, 0.8);
-  border-radius: 12px;
-  padding: 1em;
-  margin-bottom: 1em;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-  animation: fadeIn 0.7s ease;
-}
-input[type="text"], textarea {
-  width: 100%;
-  padding: 0.5em;
-  margin: 0.5em 0;
-  border: 1px solid #1f2833;
-  border-radius: 8px;
   background-color: #1f2833;
-  color: #c5c6c7;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 15px;
+  box-shadow: 0 0 12px #00f6ff;
 }
-button {
-  background-color: #0b7fab;
-  color: white;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-button:hover {
-  background-color: #00bcd4;
-  box-shadow: 0 0 10px #00ffff;
+h2 {
+  color: #00f6ff;
+  font-size: 1.1em;
+  text-shadow: 0 0 6px #00f6ff;
 }
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
 }
 li {
-  padding: 0.5em 0;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  background: #0b0c10;
+  border: 1px solid #00f6ff;
+  color: #fff;
+  border-radius: 6px;
 }
 textarea {
+  margin-top: 10px;
   height: 100px;
+}
+button {
+  background: #00f6ff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+}
+button:hover {
+  background: #02cce6;
 }
 .input-group {
   display: flex;
-  gap: 0.5em;
+  gap: 6px;
+  margin-top: 10px;
 }
 .progress-bar {
   width: 100%;
-  background: #1f2833;
+  height: 14px;
+  background: #0b0c10;
+  border: 1px solid #00f6ff;
   border-radius: 8px;
-  overflow: hidden;
-  height: 20px;
-  margin-top: 0.5em;
-  border: 1px solid #00c3ff;
+  margin-top: 8px;
 }
 #level-progress {
   height: 100%;
-  background: linear-gradient(to right, #00f6ff, #003366);
   width: 0%;
-  transition: width 0.4s ease;
-}
-.reset-btn {
-  background: #800000;
-  margin-top: 1em;
-  width: 100%;
-  font-weight: bold;
-}
-@media (max-width: 600px) {
-  .container {
-    padding: 0.5em;
-  }
-  .input-group {
-    flex-direction: column;
-  }
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  background: #00f6ff;
+  transition: width 0.3s ease;
+  border-radius: 8px;
 }

@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The System</title>
-  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>The System</h1>
-
+    <h1>THE SYSTEM</h1>
     <div class="section">
-      <h2>✅ To-Do List</h2>
-      <div class="input-group">
-        <input type="text" id="todo-input" placeholder="Aggiungi un'attività">
-        <button onclick="addTodo()">➕</button>
-      </div>
+      <h2>TO-DO LIST GIORNALIERA</h2>
       <ul id="todo-list"></ul>
-    </div>
-
-    <div class="section">
-      <h2>📝 Note</h2>
-      <textarea id="note-area" placeholder="Scrivi le tue note..."></textarea>
-      <button onclick="saveNote()">💾 Salva</button>
-    </div>
-
-    <div class="section">
-      <h2>🚀 Abitudini</h2>
       <div class="input-group">
-        <input type="text" id="habit-input" placeholder="Aggiungi abitudine">
-        <button onclick="addHabit()">➕</button>
+        <input type="text" id="todo-input" placeholder="Aggiungi attività">
+        <button onclick="addTodo()">AGGIUNGI</button>
       </div>
-      <ul id="habit-list"></ul>
     </div>
 
     <div class="section">
-      <h2>🏆 Punti e Livello</h2>
-      <p>Punti: <span id="points">0</span></p>
-      <p>Livello: <span id="level">1</span></p>
-      <div class="progress-bar">
-        <div id="level-progress"></div>
-      </div>
-      <button onclick="resetLevel()" class="reset-btn">🔄 Reset Livello</button>
+      <h2>NOTE</h2>
+      <textarea id="note-area" placeholder="Scrivi i tuoi appunti..."></textarea>
     </div>
 
-    <audio id="level-up-sound" src="level-up.mp3" preload="auto"></audio>
+    <div class="section">
+      <h2>TRACCIAMENTO DELLE ABITUDINI</h2>
+      <ul id="habit-list"></ul>
+      <div class="input-group">
+        <input type="text" id="habit-input" placeholder="Aggiungi">
+        <button onclick="addHabit()">AGGIUNGI</button>
+      </div>
+    </div>
 
+    <div class="section">
+      <h2>LIVELLO <span id="level">1</span></h2>
+      <div class="progress-bar"><div id="level-progress"></div></div>
+      <p><span id="points">0</span> / 100</p>
+    </div>
+
+    <audio id="level-up-sound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
     <script src="script.js"></script>
   </div>
 </body>
